@@ -18,7 +18,7 @@ def index():
 
         # Calculate the sum
         total = tmdb_score + imdb_votes + runtime + release_year + seasons
-        result = f"The sum is: {total}"
+        result = f"Predicted IMDB score: {total}"
 
     return render_template('index.html', result=result)
 
