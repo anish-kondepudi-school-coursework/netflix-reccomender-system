@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sum Calculator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Sum Calculator</h1>
+        <form method="POST">
+            <div class="form-group">
+                <label for="tmdb_score">TMDB Score</label>
+                <input type="number" class="form-control" name="tmdb_score" required>
+            </div>
+            <div class="form-group">
+                <label for="imdb_votes">IMDB Votes</label>
+                <input type="number" class="form-control" name="imdb_votes" required>
+            </div>
+            <div class="form-group">
+                <label for="runtime">Runtime</label>
+                <input type="number" class="form-control" name="runtime" required>
+            </div>
+            <div class="form-group">
+                <label for="release_year">Release Year</label>
+                <input type="number" class="form-control" name="release_year" required>
+            </div>
+            <div class="form-group">
+                <label for="seasons">Seasons</label>
+                <input type="number" class="form-control" name="seasons" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Calculate</button>
+        </form>
+
+        {% if result %}
+        <div class="result">
+            <h3>{{ result }}</h3>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
