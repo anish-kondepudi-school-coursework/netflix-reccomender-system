@@ -1,14 +1,15 @@
-from flask import Flask, request
-
+from flask import Flask, render_template, request
 import pandas as pd
+import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.neighbors import NearestNeighbors
 
 app = Flask(__name__)
 
 # Load the datasets
-titles_df = pd.read_csv('CleanTitles.csv')
-credits_df = pd.read_csv('credits.csv')
+static_folder = os.path.join(app.root_path, 'static')
+titles_df = pd.read_csv(os.path.join(static_folder, 'CleanTitles.csv'))
+credits_df = pd.read_csv(os.path.join(static_folder, 'credits.csv'))
 
 # Merge the datasets based on title ID
 merged_df = pd.merge(titles_df, credits_df, on='id')
@@ -58,20 +59,7 @@ def index():
                 output += "Description: " + row['description'] + "<br><br>"
             return output
     else:
-        return '''
-        <form method="POST">
-            <label for="release_year">Release Year:</label>
-            <input type="text" id="release_year" name="release_year"><br><br>
-
-            <label for="imdb_score">imdb_score:</label>
-            <input type="text" id="imdb_score" name="imdb_score"><br><br>
-
-            <label for="runtime">Runtime:</label>
-            <input type="text" id="runtime" name="runtime"><br><br>
-
-            <input type="submit" value="Submit">
-        </form>
-        '''
+        return render_template('recommendation.html', result=None)
 
 
 if __name__ == '__main__':
