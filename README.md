@@ -23,3 +23,5 @@ Once all the necessary libraries are imported, launch the app by executing the f
 This command will start the server for our web app, accessible at `http://localhost:5000/`.
 
 ### Demo
+
+https://github.com/anish-kondepudi/ECS171_Group24_Project/assets/72046642/64381a9d-6b19-462d-bfc0-fbf80effe617
